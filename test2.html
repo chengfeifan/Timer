@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+h1 {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+  background: white;
+  margin-left: 400px;
+  margin-right: 400px;
+}
+p {
+  text-align: center;
+  font-size: 500px;
+  margin-top: 100px;
+}
+
+input {
+  font-size:60px; 
+  height:70px; 
+  border:10px solid #c8cccf;
+  width:200px;
+}
+
+button{
+  font-size:60px; 
+  background: white;
+}
+
+body{
+  background-image:url(./TI.png),url(./DSCF4002-x.jpg);
+}
+</style>
+</head>
+
+<body>
+
+<h1><button id="click" onclick="myFunction()">START</button> 
+Set Time:<input type="text" id="myText" value="45">
+<button id="clickStop" onclick="stopFunction()">RESET</button></h>
+
+<br>
+<p id="demo"></p>
+
+<script>
+// Set the date we're counting down to
+var x;
+
+function myFunction() {
+
+  //set var
+  var countDown = Number(document.getElementById("myText").value);
+  // document.getElementById("number").innerHTML = countDownDate + countDown * 1000;
+  // document.getElementById("number1").innerHTML = countDownDate + 1000 * 51;
+  document.getElementById("demo").innerHTML = countDown + " s ";
+  var distance = countDown * 1000;
+
+  // Update the count down every 1 second
+x = setInterval(function() {
+
+    // Get today's date and time      
+    // Find the distance between now and the count down date
+    distance = distance - 1000;
+
+    var seconds = Math.floor(distance / 1000);
+      
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = seconds + " s ";
+      
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "0 s";
+    }
+  }, 1000);
+}
+
+function stopFunction(){
+  clearInterval(x);
+  var countDown = Number(document.getElementById("myText").value);
+  document.getElementById("demo").innerHTML = countDown + " s ";
+}
+
+
+
+</script>
+
+</body>
+</html>
